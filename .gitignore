@@ -1,3 +1,10 @@
+### Others
+deps
+debug
+build
+parameter
+
+### Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

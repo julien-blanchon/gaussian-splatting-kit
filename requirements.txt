@@ -1,0 +1,8 @@
+requests
+numpy
+typing_extensions
+rich
+fastapi
+uvicorn[standard]
+gradio
+# rerun-sdk==0.8.2 # if you want to use the rerun

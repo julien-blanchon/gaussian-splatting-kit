@@ -1,0 +1,16 @@
+[submodule "deps/gaussian-splatting-cuda"]
+	path = deps/gaussian-splatting-cuda
+	url = git@github.com:MrNeRF/gaussian-splatting-cuda.git
+	branch = master
+[submodule "deps/colmap"]
+	path = deps/colmap
+	url = git@github.com:colmap/colmap.git
+	branch = main
+[submodule "deps/rerun"]
+	path = deps/rerun
+	url = git@github.com:rerun-io/rerun.git
+	branch = release-0.8.2
+[submodule "deps/splat"]
+	path = deps/splat
+	url = git@github.com:antimatter15/splat.git
+	branch = main

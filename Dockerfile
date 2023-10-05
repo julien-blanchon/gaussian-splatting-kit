@@ -129,6 +129,8 @@ COPY --from=gs_builder /workdir/parameter /usr/local/bin/parameter
 # Setup environment
 ENV PATH /usr/local/libtorch/bin:/usr/local/cuda/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/libtorch/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+ENV LC_ALL C
+ENV LANG C
 
 # Install python dependencies
 COPY requirements.txt /app/requirements.txt

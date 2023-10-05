@@ -3,6 +3,8 @@ from pathlib import Path
 import subprocess
 from typing import Optional
 from rich.console import Console
+import os 
+import shutil
 
 console = Console()
 
@@ -45,10 +47,16 @@ def gaussian_splatting_cuda_training(
     Set custom average onvergence rate for the training process. Requires the flag --enable-cr-monitoring to be set.
     """ 
     
+    # export LC_ALL=C
+    # export LANG=C
+    os.environ["LC_ALL"] = "C"
+    os.environ["LANG"] = "C"
+    
+
     cmd = [
         gs_command,
-        f"--data-path={data_path.as_posix()}"
-        f"--output-path={output_path.as_posix()}"
+        f"--data-path={data_path.as_posix()}",
+        f"--output-path={output_path.as_posix()}",
         f"--iter={iterations}",
         # TODO: Enable these options and put the right defaults in the function signature
         # f"--convergence-rate={convergence_rate}",
@@ -106,3 +114,11 @@ def gaussian_splatting_cuda(
         empty_gpu_cache,
         stream_file
     )
+
+    # Copy the /output/point_cloud/iteration_{iteration}/point_cloud.ply to the output_path
+    shutil.copyfile(
+        src=output_path / "point_cloud" / f"iteration_{iterations}" / "point_cloud.ply",
+        dst=output_path / "final_point_cloud.ply"
+    )
+
+    console.log(f"📄 Final point cloud saved to {output_path / 'final_point_cloud.ply'}")
